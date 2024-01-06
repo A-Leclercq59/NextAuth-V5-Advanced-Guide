@@ -22,8 +22,8 @@ import { FormSuccess } from "@/components/form-success";
 import { register } from "@/actions/register";
 
 export const RegisterForm = () => {
-  const [error, setError] = useState<string | undefined>();
-  const [success, setSuccess] = useState<string | undefined>();
+  const [error, setError] = useState<string | undefined>("");
+  const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof RegisterSchema>>({
@@ -66,8 +66,8 @@ export const RegisterForm = () => {
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="John Doe"
                       disabled={isPending}
+                      placeholder="John Doe"
                     />
                   </FormControl>
                   <FormMessage />
@@ -83,9 +83,9 @@ export const RegisterForm = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      disabled={isPending}
                       placeholder="john.doe@example.com"
                       type="email"
-                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -101,9 +101,9 @@ export const RegisterForm = () => {
                   <FormControl>
                     <Input
                       {...field}
+                      disabled={isPending}
                       placeholder="******"
                       type="password"
-                      disabled={isPending}
                     />
                   </FormControl>
                   <FormMessage />
@@ -113,7 +113,7 @@ export const RegisterForm = () => {
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />
-          <Button type="submit" className="w-full" disabled={isPending}>
+          <Button disabled={isPending} type="submit" className="w-full">
             Create an account
           </Button>
         </form>
